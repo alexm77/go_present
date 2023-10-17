@@ -1,0 +1,21 @@
+syntax = "proto3";
+package cpmproto;
+option go_package = "github.com/alexm77/go_present/ch7/cpmproto";
+
+enum Type {
+    Start = 0;
+    Stop = 1;
+}
+
+message ChargingSessionEvent {
+    Type type = 1;
+    string wallbox_serial_number = 2;
+    uint64 meter_reading = 3; //[mWh] Energy shown by the energy meter in the wall box.
+    uint64 start_date = 4; //[msec] UNIX time showing the point in time the charging started event took place.
+}
+
+
+message ChargingCommand {
+    Type type = 1;
+    string wallbox_serial_number = 2;
+}
